@@ -10,6 +10,11 @@
 <% if @pictures %>
   <% @pictures.each do |p| %>
     <%= image_tag p["oembed"]["url"] %><br>
-    <%= p["data"]["caption"]["text"] rescue nil %><br><br>
+    <% caption = p["data"]["caption"] %>
+    <% if caption %>
+      <%= (caption["from"]["username"] + "&mdash;").html_safe rescue nil %>
+      <%= caption["text"] rescue nil %><br>
+    <% end %>
+    <br>
   <% end %>
 <% end %>
