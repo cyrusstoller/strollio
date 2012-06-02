@@ -49,6 +49,7 @@ gem 'foreman'
 gem 'heroku'
 
 gem 'omniauth-singly'
+gem 'yajl-ruby'
 
 
 # To use ActiveModel has_secure_password
