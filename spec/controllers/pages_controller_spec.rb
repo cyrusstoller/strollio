@@ -29,6 +29,7 @@ describe PagesController do
   
   describe "GET 'pictures'" do
     it "returns http success" do
+      session[:access_token] = "foo"
       get 'pictures'
       response.should be_success
     end

@@ -1,4 +1,15 @@
 <%= @query %>
 <br>
 <br>
-<%= @lat %>, <%= @lon %>
+
+<%= @lat %>, <%= @lon %> - count:
+<% if @pictures %>
+  <%= @pictures.count %>
+<% end %>
+<hr/>
+<% if @pictures %>
+  <% @pictures.each do |p| %>
+    <%= image_tag p["oembed"]["url"] %><br>
+    <%= p["data"]["location"] %>
+  <% end %>
+<% end %>
