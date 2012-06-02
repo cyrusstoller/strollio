@@ -14,6 +14,8 @@
     <% if caption %>
       <%= (caption["from"]["username"] + "&mdash;").html_safe rescue nil %>
       <%= caption["text"] rescue nil %><br>
+    <% else %>
+      <%= p %>
     <% end %>
     <br>
   <% end %>
