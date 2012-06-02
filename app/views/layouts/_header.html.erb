@@ -14,8 +14,8 @@
           <li><%= link_to "Settings", settings_path %></li>
           <li class="divider-vertical"></li>
         </ul>
-        <%= form_tag root_path, :class => "navbar-search", :method => :get do %>
-          <%= text_field_tag :q, nil, :class => "search-query span5", :placeholder => "Search by zip code, street address, or lat/lon" %>
+        <%= form_tag pictures_path, :class => "navbar-search", :method => :get do %>
+          <%= text_field_tag :q, params[:q], :class => "search-query span5", :placeholder => "Search by zip code, street address, or lat/lon" %>
         <% end %>
         <% if session[:access_token] %>
         <ul class="nav pull-right">

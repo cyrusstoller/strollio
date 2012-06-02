@@ -3,14 +3,24 @@ require 'httparty'
 class PagesController < ApplicationController
   def welcome
     @profiles = get_profiles
-        
-    @query = HTTParty.get("http://where.yahooapis.com/geocode?q=" + URI.escape(params[:q]) + "&appid=" + ENV["YAHOO_APP_ID"]) if params[:q]
   end
 
   def about
   end
   
   def settings
+  end
+  
+  def pictures
+    if params[:q]
+      lat_lon_url = "http://where.yahooapis.com/geocode?q=" + URI.escape(params[:q]) + "&appid=" + ENV["YAHOO_APP_ID"]
+      @query = HTTParty.get(lat_lon_url).parsed_response
+      unless @query["ResultSet"]["Result"].kind_of?(Array)
+        @lat = @query["ResultSet"]["Result"]["latitude"]
+        @lon = @query["ResultSet"]["Result"]["longitude"]
+      end
+    end
+    
   end
   
   private
