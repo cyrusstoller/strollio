@@ -10,6 +10,6 @@
 <% if @pictures %>
   <% @pictures.each do |p| %>
     <%= image_tag p["oembed"]["url"] %><br>
-    <%= p["data"]["location"] %>
+    <%= p["data"]["caption"]["text"] rescue nil %><br><br>
   <% end %>
 <% end %>

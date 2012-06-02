@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     HTTParty.get(url, :query => { :access_token => access_token }).parsed_response if access_token
   end
   
-  def get_pictures_in(radius = 5000)
+  def get_pictures_in(radius = 5)
     access_token = session[:access_token]
     url = APP_CONFIG["singly_api_base"] + "/v0/types/photos_feed"
     query = { :access_token => access_token, :min_count => 1000, :near => "#{@lat},#{@lon}", :dedup => true, :within => radius }
