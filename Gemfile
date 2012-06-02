@@ -29,6 +29,7 @@ gem 'jquery-rails'
 
 group :test do
   gem "rspec-rails", "~> 2.8"
+  gem "rspec"
   gem "webrat"
   gem "factory_girl_rails", "~> 3.0"
   gem 'ZenTest'
@@ -49,8 +50,7 @@ gem 'foreman'
 gem 'heroku'
 
 gem 'omniauth-singly'
-gem 'yajl-ruby'
-
+gem 'httparty'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

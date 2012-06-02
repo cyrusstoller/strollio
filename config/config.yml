@@ -2,3 +2,5 @@ default_url_options:
   development: http://localhost:5000
   test:        http://localhost:5000
   production:  http://example.com
+  
+singly_api_base: https://api.singly.com

@@ -5,6 +5,9 @@ describe PagesController do
 
   describe "GET 'welcome'" do
     it "returns http success" do
+      stub_request(:get, "https://api.singly.com/profiles?access_token=").
+               to_return(:status => 200, :body => "", :headers => {})
+               
       get 'welcome'
       response.should be_success
     end
