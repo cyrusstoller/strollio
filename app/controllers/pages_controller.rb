@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     HTTParty.get(url, :query => { :access_token => access_token }).parsed_response if access_token
   end
   
-  def get_pictures_in(radius = 2)
+  def get_pictures_in(radius = 10)
     access_token = session[:access_token]
     url = APP_CONFIG["singly_api_base"] + "/v0/types/photos_feed"
     query = { :access_token => access_token, :min_count => 1000, :near => "#{@lat},#{@lon}", :dedup => true, :within => radius }
@@ -48,10 +48,11 @@ class PagesController < ApplicationController
     HTTParty.get(url, :query => query ).parsed_response if access_token
   end
   
-  def get_additional_pictures(existing_pics = 0)
+  def get_additional_pictures(existing_pics = 0, radius = 10)
+    r = radius * 1000
     access_token = session[:access_token]
     url = APP_CONFIG["singly_api_base"] + "/proxy/instagram/media/search"
-    res = HTTParty.get(url, :query => { :access_token => access_token, :lat => @lat, :lng => @lon, :distance => 2000 }).parsed_response if access_token
+    res = HTTParty.get(url, :query => { :access_token => access_token, :lat => @lat, :lng => @lon, :distance => r }).parsed_response if access_token
     return res["data"]
   end
 end
