@@ -17,6 +17,11 @@
         <%= form_tag nil, :class => "form navbar-search" do %>
           <%= text_field_tag nil, nil, :class => "search-query span5", :placeholder => "Search by street address or lat/lon" %>
         <% end %>
+        <% if session[:access_token] %>
+        <ul class="nav pull-right">
+          <li><%= link_to "Sign Out", logout_path %></li>
+        </ul>
+        <% end %>
       </div><!-- /.nav-collapse -->
     </div>
   </div><!-- /navbar-inner -->
