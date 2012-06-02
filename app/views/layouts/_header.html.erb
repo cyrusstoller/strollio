@@ -1,0 +1,23 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "Stroll.io", root_path, :class => "brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Settings", settings_path %></li>
+          <li class="divider-vertical"></li>
+        </ul>
+        <%= form_tag nil, :class => "form navbar-search" do %>
+          <%= text_field_tag nil, nil, :class => "search-query span5", :placeholder => "Search by street address or lat/lon" %>
+        <% end %>
+      </div><!-- /.nav-collapse -->
+    </div>
+  </div><!-- /navbar-inner -->
+</div>
