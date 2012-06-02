@@ -1,12 +1,15 @@
+<h3>You searched for <%= params[:q] %></h3>
+
 <%= @query %>
 <br>
 <br>
 
-<%= @lat %>, <%= @lon %> - count:
+<%= @lat %>, <%= @lon %>
 <% if @pictures %>
-  <%= @pictures.count %>
+  <% @pictures.count %>
 <% end %>
-<hr/>
+<br>
+
 <% if @pictures %>
   <% @pictures.each do |p| %>
     <%= image_tag p["oembed"]["url"] %><br>
@@ -20,7 +23,6 @@
     <br>
   <% end %>
 <% end %>
-<hr/>
 
 <% if @additional_pictures %>
   <% @additional_pictures.each do |p| %>

@@ -26,7 +26,7 @@ class PagesController < ApplicationController
         @lon = @query["ResultSet"]["Result"]["longitude"]
         
         @pictures = get_pictures_in
-        @additional_pictures = get_additional_pictures(@pictures.count)
+        @additional_pictures = get_additional_pictures(@pictures.count) rescue nil
       end
     end
     
