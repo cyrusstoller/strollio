@@ -12,10 +12,23 @@
     <%= image_tag p["oembed"]["url"] %><br>
     <% caption = p["data"]["caption"] %>
     <% if caption %>
-      <%= (caption["from"]["username"] + "&mdash;").html_safe rescue nil %>
+      <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
       <%= caption["text"] rescue nil %><br>
     <% else %>
-      <%= p %>
+      <% p %>
+    <% end %>
+    <br>
+  <% end %>
+<% end %>
+<hr/>
+
+<% if @additional_pictures %>
+  <% @additional_pictures.each do |p| %>
+    <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
+    <% caption = p["caption"] %>
+    <% if caption %>
+      <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
+      <%= caption["text"] %><br>
     <% end %>
     <br>
   <% end %>
