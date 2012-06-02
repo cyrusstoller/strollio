@@ -1,5 +1,13 @@
 ## Starting up the application
 
+`.env`
+
+```
+SINGLY_ID=xxxx
+SINGLY_SECRET=xxxx
+YAHOO_APP_ID=xxxx
+```
+
 ```
 $ bundle install
 $ rake db:create # first time only

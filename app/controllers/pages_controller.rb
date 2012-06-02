@@ -3,6 +3,8 @@ require 'httparty'
 class PagesController < ApplicationController
   def welcome
     @profiles = get_profiles
+        
+    @query = HTTParty.get("http://where.yahooapis.com/geocode?q=" + URI.escape(params[:q]) + "&appid=" + ENV["YAHOO_APP_ID"]) if params[:q]
   end
 
   def about
