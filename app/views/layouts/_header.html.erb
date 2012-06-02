@@ -8,15 +8,16 @@
       </a>
       <%= link_to "Stroll.io", root_path, :class => "brand" %>
       <div class="nav-collapse">
+         <%= form_tag pictures_path, :class => "navbar-search", :method => :get do %>
+          <%= text_field_tag :q, params[:q], :class => "search-query span5", :placeholder => "Search by zip code, street address, or lat/lon" %>
+        <% end %>
         <ul class="nav">
           <li class="divider-vertical"></li>
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Settings", settings_path %></li>
           <li class="divider-vertical"></li>
         </ul>
-        <%= form_tag pictures_path, :class => "navbar-search", :method => :get do %>
-          <%= text_field_tag :q, params[:q], :class => "search-query span5", :placeholder => "Search by zip code, street address, or lat/lon" %>
-        <% end %>
+       
         <% if session[:access_token] %>
         <ul class="nav pull-right">
           <li><%= link_to "Sign Out", logout_path %></li>
