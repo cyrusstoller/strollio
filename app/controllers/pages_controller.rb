@@ -6,9 +6,7 @@ class PagesController < ApplicationController
   end
 
   def about
-  end
-  
-  def settings
+    @title = "About"
   end
   
   def pictures

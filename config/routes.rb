@@ -5,7 +5,6 @@ Strollio::Application.routes.draw do
 
   match '/welcome'  => 'pages#welcome',  :as => "welcome",  :via => :get
   match '/about'    => 'pages#about',    :as => "about",    :via => :get
-  match '/settings' => 'pages#settings', :as => "settings", :via => :get
   match '/pictures' => 'pages#pictures', :as => "pictures"
 
   # singly
