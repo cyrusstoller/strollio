@@ -28,26 +28,42 @@
 
 <div class="row">
   <div class="span9">
-    <% if @pictures %>
     <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
-      <a href="http://placekitten.com/500/500" title="Title" rel="gallery"><img class="thumb" src="http://placekitten.com/500/500"></a>
-    </div>
-
-    <hr>
-      
-    <% end %>
-
-    <% if @additional_pictures %>
-      <% @additional_pictures.each do |p| %>
-        <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
-        <% caption = p["caption"] %>
-        <% if caption %>
-          <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
-          <%= caption["text"] %><br>
+      <% if @pictures %>      
+        <% @pictures.each do |p| %>
+          <% caption = p["data"]["caption"] %>
+          <% if caption %>
+            <% title = [] %>
+            <% title << (caption["from"]["username"]).html_safe rescue nil %>
+            <% title << caption["text"] rescue nil %>
+            <% title = title.join(" &mdash; ").html_safe %>
+          <% else %>
+            <% title = "" %>
+          <% end %>
+        
+          <%= link_to p["oembed"]["url"], :title => title, :rel => "gallery" do %>
+            <%= image_tag p["oembed"]["url"] %>
+          <% end %>
         <% end %>
-        <br>
       <% end %>
-    <% end %>
+      
+      <% if @additional_pictures %>
+        <% @additional_pictures.each do |p| %>
+          <% caption = p["caption"] %>
+          <% if caption %>
+            <% title = [] %>
+            <% title << (caption["from"]["username"]).html_safe rescue nil %>
+            <% title << caption["text"] rescue nil %>
+            <% title = title.join(" &mdash; ").html_safe %>
+          <% end %>
+          
+          <%= link_to p["images"]["standard_resolution"]["url"], :title => title, :rel => "gallery" do %>
+            <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
+          <% end %>
+          
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="span3">
     <% if @lat and @lon %>
@@ -55,7 +71,6 @@
     <% end %>
   </div>
 </div>
-
 
 
 <!-- modal-gallery is the modal dialog used for the image gallery -->
