@@ -19,7 +19,6 @@
   </h4>
 <% end %>
 <br>
-<button id="toggle-fullscreen" class="btn btn-large btn-primary" data-toggle="button">Toggle Fullscreen</button>
 
 
 <hr>
@@ -28,7 +27,17 @@
 
 <div class="row">
   <div class="span9">
-    <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+    <ul class="nav nav-pills">
+  <li class="active"><a href="#the-web" data-toggle="pill">The Web</a></li>
+  <li><a href="#your-network" data-toggle="pill">Just Your Network</a></li>
+  
+</ul>
+
+<div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+
+<div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade" id="your-network">
+                    <h2> Your Network </h2>
       <% if @pictures %>      
         <% @pictures.each do |p| %>
           <% caption = p["data"]["caption"] %>
@@ -43,13 +52,17 @@
             <% title << p["data"]["name"] rescue nil %>
             <% title = title.join(" &mdash; ").html_safe %>
           <% end %>
-        
+
           <%= link_to p["oembed"]["url"], :title => title, :rel => "gallery" do %>
-            <%= image_tag p["oembed"]["url"] %>
+          <div class="thumb-container">
+            <%= image_tag p["oembed"]["url"], :class => "thumb" %>
+          </div>
           <% end %>
         <% end %>
       <% end %>
-      
+            </div>
+            <div class="tab-pane fade in active" id="the-web">
+                   <h2> The Web</h2>
       <% if @additional_pictures %>
         <% @additional_pictures.each do |p| %>
           <% caption = p["caption"] %>
@@ -61,11 +74,19 @@
           <% end %>
           
           <%= link_to p["images"]["standard_resolution"]["url"], :title => title, :rel => "gallery" do %>
-            <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
+          <div class="thumb-container">
+            <%= image_tag p["images"]["standard_resolution"]["url"], :class => "thumb" %>
+          </div>
           <% end %>
           
         <% end %>
       <% end %>
+            </div>
+          </div>
+
+    
+
+
     </div>
   </div>
   <div class="span3">
@@ -86,7 +107,6 @@
     <div class="modal-footer">
         <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
         <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
-        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
         <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
     </div>
 </div>

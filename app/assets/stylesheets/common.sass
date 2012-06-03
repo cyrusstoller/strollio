@@ -11,6 +11,7 @@ ul.nav
   height: 35px
   font-family: 'Fascinate Inline'
   text-transform: lowercase
+  color: #ddd
 
 .navbar .brand:hover
   color: #eee
@@ -19,12 +20,50 @@ ul.nav
 .navbar-search
   margin-top: 15px
 
+//WELCOME PAGE
+
+.service-not-connected
+  display: inline
+  background-repeat: no-repeat
+  background-position: 0px -2px
+  padding-left: 30px
+
+.service-is-connected
+  display: inline
+  font-size: 25px
+  font-weight: 200
+  background-image: url(checkmark.png)
+  background-repeat: no-repeat
+  background-position: 0px -6px
+  padding-left: 30px
+
+
+ul.services
+  list-style: none
+
+li.service-name
+  font-size: 28px
+  font-weight: bold
+  line-height: 35px
 
 
 //Gallery
 
 .thumb
   max-width: 150px
+  min-height: 140px
+
+.thumb-container
+
+  vertical-align: top
+  background-color: #000
+  border: 1px solid #333
+  display: inline-block
+  height: 150px
+  width: 150px
+  margin: 4px 2px
+  box-shadow: 0px 1px 1px #333
+
 .modal-gallery
   width: auto
   max-height: none

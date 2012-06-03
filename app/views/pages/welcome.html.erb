@@ -5,8 +5,10 @@
 </header>
 
 <p>
+  
   <% %w[facebook twitter instagram foursquare].each do |service| %>
-    <li>
+  <ul class="services">
+    <li class="service-name">
       <%= service.capitalize %>
       <% if @profiles && @profiles[service] %>
         <div class="service-is-connected">
@@ -14,9 +16,11 @@
           <% @profiles[service] %>
         </div>
       <% else %>
-        is not connected.
+        <div class="service-not-connected">
         <%= link_to "Connect", "/auth/singly?service=#{service}" %>
+      </div>
       <% end %>
     </li>
+  </ul>
   <% end %>
 </p>
