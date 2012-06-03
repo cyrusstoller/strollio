@@ -1,13 +1,24 @@
-<h3>You searched for <%= params[:q] %></h3>
+<h3>You searched for "<%= params[:q] %>"</h3>
 
-<%= @query %>
-<br>
-<br>
-
-<%= @lat %>, <%= @lon %>
-<% if @pictures %>
-  <% @pictures.count %>
+<% if @query["ResultSet"]["Result"].kind_of?(Array) %>
+  <h4>Uh oh. That's not specific enough. Which location did you mean to search for?</h4>
+  <br>
+  <ul>
+    <% @query["ResultSet"]["Result"].each do |addr| %>
+      <li>
+        <% loc = [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>
+        <%= link_to loc, pictures_path(:q => loc) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>
+    We searched around
+    <% addr = @query["ResultSet"]["Result"] %> 
+    "<%= [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>"
+  </h4>
 <% end %>
+<br>
 <br>
 
 <% if @pictures %>
