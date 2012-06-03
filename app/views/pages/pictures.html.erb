@@ -21,28 +21,37 @@
 <br>
 <br>
 
-<% if @pictures %>
-  <% @pictures.each do |p| %>
-    <%= image_tag p["oembed"]["url"] %><br>
-    <% caption = p["data"]["caption"] %>
-    <% if caption %>
-      <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
-      <%= caption["text"] rescue nil %><br>
-    <% else %>
-      <% p %>
+<div class="row">
+  <div class="span9">
+    <% if @pictures %>
+      <% @pictures.each do |p| %>
+        <%= image_tag p["oembed"]["url"] %><br>
+        <% caption = p["data"]["caption"] %>
+        <% if caption %>
+          <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
+          <%= caption["text"] rescue nil %><br>
+        <% else %>
+          <% p %>
+        <% end %>
+        <br>
+      <% end %>
     <% end %>
-    <br>
-  <% end %>
-<% end %>
 
-<% if @additional_pictures %>
-  <% @additional_pictures.each do |p| %>
-    <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
-    <% caption = p["caption"] %>
-    <% if caption %>
-      <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
-      <%= caption["text"] %><br>
+    <% if @additional_pictures %>
+      <% @additional_pictures.each do |p| %>
+        <%= image_tag p["images"]["standard_resolution"]["url"] %><br>
+        <% caption = p["caption"] %>
+        <% if caption %>
+          <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
+          <%= caption["text"] %><br>
+        <% end %>
+        <br>
+      <% end %>
     <% end %>
-    <br>
-  <% end %>
-<% end %>
+  </div>
+  <div class="span3">
+    <% if @lat and @lon %>
+      <h4>Nearest Airport</h4>
+    <% end %>
+  </div>
+</div>
