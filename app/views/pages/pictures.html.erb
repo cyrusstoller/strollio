@@ -19,22 +19,22 @@
   </h4>
 <% end %>
 <br>
-<br>
+<button id="toggle-fullscreen" class="btn btn-large btn-primary" data-toggle="button">Toggle Fullscreen</button>
+
+
+<hr>
+
+<!--STATIC IMAGE GALLERY -->
 
 <div class="row">
   <div class="span9">
     <% if @pictures %>
-      <% @pictures.each do |p| %>
-        <%= image_tag p["oembed"]["url"] %><br>
-        <% caption = p["data"]["caption"] %>
-        <% if caption %>
-          <%= (caption["from"]["username"] + " &mdash;").html_safe rescue nil %>
-          <%= caption["text"] rescue nil %><br>
-        <% else %>
-          <% p %>
-        <% end %>
-        <br>
-      <% end %>
+    <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+    <a href="http://placekitten.com/500/500" title="Title" rel="gallery"><img class="thumb" src="http://placekitten.com/500/500"></a>
+</div>
+
+<hr>
+      
     <% end %>
 
     <% if @additional_pictures %>
@@ -54,4 +54,21 @@
       <h4>Nearest Airport</h4>
     <% end %>
   </div>
+</div>
+
+
+
+<!-- modal-gallery is the modal dialog used for the image gallery -->
+<div id="modal-gallery" class="modal modal-gallery hide fade">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body"><div class="modal-image"></div></div>
+    <div class="modal-footer">
+        <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+        <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
+        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
+        <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
+    </div>
 </div>
