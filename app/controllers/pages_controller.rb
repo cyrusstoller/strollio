@@ -22,8 +22,14 @@ class PagesController < ApplicationController
       lat_lon_url = "http://where.yahooapis.com/geocode?q=" + URI.escape(params[:q]) + "&appid=" + ENV["YAHOO_APP_ID"]
       @query = HTTParty.get(lat_lon_url).parsed_response
       unless @query["ResultSet"]["Result"].kind_of?(Array)
-        @lat = @query["ResultSet"]["Result"]["latitude"]
-        @lon = @query["ResultSet"]["Result"]["longitude"]
+        begin
+          @lat = @query["ResultSet"]["Result"]["latitude"]
+          @lon = @query["ResultSet"]["Result"]["longitude"]
+        rescue
+          flash[:error] = "We're pretty sure that \"#{params[:q]}\" is not a real place."
+          redirect_to root_path
+          return
+        end
         
         @pictures = get_pictures_in
         @additional_pictures = get_additional_pictures(@pictures.count) rescue nil
