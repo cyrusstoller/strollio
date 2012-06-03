@@ -9,8 +9,10 @@
     <li>
       <%= service.capitalize %>
       <% if @profiles && @profiles[service] %>
-        is connected as
-        <%= @profiles[service] %>
+        <div class="service-is-connected">
+          is connected
+          <% @profiles[service] %>
+        </div>
       <% else %>
         is not connected.
         <%= link_to "Connect", "/auth/singly?service=#{service}" %>
