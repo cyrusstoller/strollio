@@ -41,7 +41,6 @@ group :test do
   gem 'autotest-growl'
   gem 'annotate', '~> 2.4.1.beta' 
   gem 'webmock'
-  gem 'resque_spec'
 end
 
 gem "will_paginate", "~> 3.0"
