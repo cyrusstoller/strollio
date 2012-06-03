@@ -34,6 +34,11 @@ class PagesController < ApplicationController
       return
     end
     
+    if @pictures.blank? and @additional_pictures.blank?
+      flash[:error] = "Uh oh there aren't any results for \"#{params[:q]}\"."
+      redirect_to root_path
+      return
+    end
   end
   
   private
