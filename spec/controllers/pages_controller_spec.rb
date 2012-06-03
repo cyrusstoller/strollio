@@ -31,7 +31,7 @@ describe PagesController do
     it "returns http success" do
       session[:access_token] = "foo"
       get 'pictures'
-      response.should be_success
+      response.should redirect_to root_path
     end
   end
 

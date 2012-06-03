@@ -28,6 +28,10 @@ class PagesController < ApplicationController
         @pictures = get_pictures_in
         @additional_pictures = get_additional_pictures(@pictures.count) rescue nil
       end
+    else
+      flash[:error] = "Oops. You forgot to tell us what to search for."
+      redirect_to root_path
+      return
     end
     
   end
@@ -44,7 +48,6 @@ class PagesController < ApplicationController
     access_token = session[:access_token]
     url = APP_CONFIG["singly_api_base"] + "/v0/types/photos_feed"
     query = { :access_token => access_token, :min_count => 1000, :near => "#{@lat},#{@lon}", :dedup => true, :within => radius }
-    
     HTTParty.get(url, :query => query ).parsed_response if access_token
   end
   
