@@ -38,7 +38,10 @@
             <% title << caption["text"] rescue nil %>
             <% title = title.join(" &mdash; ").html_safe %>
           <% else %>
-            <% title = "" %>
+            <% title = [] %>
+            <% title << p["data"]["from"]["name"] rescue nil %>
+            <% title << p["data"]["name"] rescue nil %>
+            <% title = title.join(" &mdash; ").html_safe %>
           <% end %>
         
           <%= link_to p["oembed"]["url"], :title => title, :rel => "gallery" do %>
