@@ -26,18 +26,10 @@
 <!--STATIC IMAGE GALLERY -->
 
 <div class="row">
-  <div class="span9">
-    <ul class="nav nav-pills">
-  <li class="active"><a href="#the-web" data-toggle="pill">The Web</a></li>
-  <li><a href="#your-network" data-toggle="pill">Just Your Network</a></li>
-  
-</ul>
+  <div class="span12">
 
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
-
-<div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade" id="your-network">
-                    <h2> Your Network </h2>
+                    <h2 class="bold"> Your Network </h2>
       <% if @pictures %>      
         <% @pictures.each do |p| %>
           <% caption = p["data"]["caption"] %>
@@ -57,12 +49,16 @@
           <div class="thumb-container">
             <%= image_tag p["oembed"]["url"], :class => "thumb" %>
           </div>
+      
+          
           <% end %>
         <% end %>
+      <% else %>
+      <h2>Nothin!</h2>
       <% end %>
-            </div>
-            <div class="tab-pane fade in active" id="the-web">
-                   <h2> The Web</h2>
+
+           <hr>
+                   <h2 class="bold"> The Web</h2>
       <% if @additional_pictures %>
         <% @additional_pictures.each do |p| %>
           <% caption = p["caption"] %>
@@ -82,19 +78,13 @@
         <% end %>
       <% end %>
             </div>
-          </div>
+          
 
     
 
 
     </div>
-  </div>
-  <div class="span3">
-    <% if @lat and @lon %>
-      <h4>Nearest Airport</h4>
-    <% end %>
-  </div>
-</div>
+
 
 
 <!-- modal-gallery is the modal dialog used for the image gallery -->

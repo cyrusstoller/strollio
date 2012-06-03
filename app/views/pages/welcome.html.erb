@@ -1,12 +1,16 @@
-<header class="jumbotron masthead">
+<center>
+<header style="margin-bottom: 20px;" class="jumbotron masthead">
   <div class="inner">
-    <h1>Welcome!</h1>    
+    <h1>Welcome!</h1>
+    <p>Search and stroll through photos from your network and the web.</p>
+    <hr style="border-top: 1px solid #333;">
+    <p style="width: 600px; line-height: 24px; font-size: 20px;">Connect your social accounts below to see your photos (and your friends' photos) for any given location.</p>
   </div>
 </header>
-
-<p>
+<div style="width: 550px; line-height: 10px; background-color: #fff; box-shadow: inset 1px 1px 2px #666;" class="well">
   
   <% %w[facebook twitter instagram foursquare].each do |service| %>
+  <div class="row">
   <ul class="services">
     <li class="service-name">
       <%= service.capitalize %>
@@ -17,10 +21,12 @@
         </div>
       <% else %>
         <div class="service-not-connected">
-        <%= link_to "Connect", "/auth/singly?service=#{service}" %>
+        <%= link_to "Connect", "/auth/singly?service=#{service}", :class => 'btn btn-primary' %>
       </div>
       <% end %>
     </li>
   </ul>
+</div>
   <% end %>
-</p>
+</div>
+</center>

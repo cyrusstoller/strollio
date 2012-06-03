@@ -1,17 +1,42 @@
 @import url(http://fonts.googleapis.com/css?family=Fascinate+Inline)
+@import url(http://fonts.googleapis.com/css?family=Questrial)
 
 body
   background-color: #eee
+  font-family: 'Questrial'
 ul.nav
-  padding: 10px 0px
+  padding: 11px 0px
+  color: #fff
 
+ul.nav li a
+  padding: 11px 0px
+
+.navbar .nav > li > a
+  color: #fff
+
+.navbar .nav > li > a:hover
+  text-decoration: underline
+
+
+.navbar-inner
+  max-height: 58px
+  padding-top: 2px
+  background: #c9de96
+  background: -moz-linear-gradient(top,  #c9de96 0%, #8ab66b 44%, #398235 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9de96), color-stop(44%,#8ab66b), color-stop(100%,#398235))
+  background: -webkit-linear-gradient(top,  #c9de96 0%,#8ab66b 44%,#398235 100%)
+  background: -o-linear-gradient(top,  #c9de96 0%,#8ab66b 44%,#398235 100%)
+  background: -ms-linear-gradient(top,  #c9de96 0%,#8ab66b 44%,#398235 100%)
+  background: linear-gradient(top,  #c9de96 0%,#8ab66b 44%,#398235 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', endColorstr='#398235',GradientType=0 )
 .navbar .brand
   font-size: 35px
-  margin-top: 3px
+  margin-top: 2px
   height: 35px
   font-family: 'Fascinate Inline'
   text-transform: lowercase
-  color: #ddd
+  color: #fff
+  text-shadow: 0px 1px 2px #333
 
 .navbar .brand:hover
   color: #eee
@@ -27,10 +52,11 @@ ul.nav
   background-repeat: no-repeat
   background-position: 0px -2px
   padding-left: 30px
+  float: right
 
 .service-is-connected
   display: inline
-  font-size: 25px
+  font-size: 22px
   font-weight: 200
   background-image: url(checkmark.png)
   background-repeat: no-repeat
@@ -41,6 +67,7 @@ ul.nav
 ul.services
   list-style: none
 
+
 li.service-name
   font-size: 28px
   font-weight: bold
@@ -50,19 +77,25 @@ li.service-name
 //Gallery
 
 .thumb
-  max-width: 150px
-  min-height: 140px
+  max-width: 178px
+  min-height: 178px
 
 .thumb-container
 
+  
+  opacity: 0.9
   vertical-align: top
   background-color: #000
   border: 1px solid #333
   display: inline-block
-  height: 150px
-  width: 150px
+  height: 178px
+  width: 178px
   margin: 4px 2px
   box-shadow: 0px 1px 1px #333
+
+.thumb-container:hover
+
+  opacity: 1
 
 .modal-gallery
   width: auto

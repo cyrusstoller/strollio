@@ -12,11 +12,11 @@
           <%= text_field_tag :q, params[:q], :class => "search-query span5", :placeholder => "Search by zip code, street address, or lat/lon" %>
         <% end %>
         <ul class="nav">
-          <li class="divider-vertical"></li>
+
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Settings", settings_path %></li>
           <li><button id="toggle-fullscreen" rel="Go Fullscreen!" class="btn btn-large btn-primary" data-toggle="button"><i class="icon-resize-full icon-white"></i></button></li>
-          <li class="divider-vertical"></li>
+
         </ul>
        
         <% if session[:access_token] %>
