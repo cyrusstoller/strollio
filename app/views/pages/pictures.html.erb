@@ -16,6 +16,8 @@
     We searched around
     <% addr = @query["ResultSet"]["Result"] %> 
     "<%= [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>"
+    &mdash;
+    <%= link_to "Book a flight here with Hipmunk!", "http://www.hipmunk.com" %>
   </h4>
 <% end %>
 <br>
