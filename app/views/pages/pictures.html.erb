@@ -1,24 +1,24 @@
 <h3>You searched for "<%= params[:q] %>"</h3>
 
 <% if @query["ResultSet"]["Result"].kind_of?(Array) %>
-  <h4>Uh oh. That's not specific enough. Which location did you mean to search for?</h4>
-  <br>
-  <ul>
-    <% @query["ResultSet"]["Result"].each do |addr| %>
-      <li>
-        <% loc = [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>
-        <%= link_to loc, pictures_path(:q => loc) %>
-      </li>
-    <% end %>
-  </ul>
+<h4>Uh oh. That's not specific enough. Which location did you mean to search for?</h4>
+<br>
+<ul>
+  <% @query["ResultSet"]["Result"].each do |addr| %>
+  <li>
+    <% loc = [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>
+    <%= link_to loc, pictures_path(:q => loc) %>
+  </li>
+  <% end %>
+</ul>
 <% else %>
-  <h4>
-    We searched around
-    <% addr = @query["ResultSet"]["Result"] %> 
-    "<%= [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>"
-    &mdash;
-    <%= link_to "Book a flight here with Hipmunk!", "http://www.hipmunk.com" %>
-  </h4>
+<h4>
+  We searched around
+  <% addr = @query["ResultSet"]["Result"] %> 
+  "<%= [addr["city"], addr["county"], addr["state"], addr["country"]].compact.join(", ") %>"
+  &mdash;
+  <%= link_to "Book a flight here with Hipmunk!", "http://www.hipmunk.com" %>
+</h4>
 <% end %>
 <br>
 
@@ -30,8 +30,8 @@
 <div class="row">
   <div class="span12">
 
-<div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
-                    <h2 class="bold"> Your Network </h2>
+    <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+      <h2 class="bold"> Your Network </h2>
       <% if @pictures %>      
         <% @pictures.each do |p| %>
           <% caption = p["data"]["caption"] %>
@@ -48,19 +48,17 @@
           <% end %>
 
           <%= link_to p["oembed"]["url"], :title => title, :rel => "gallery" do %>
-          <div class="thumb-container">
-            <%= image_tag p["oembed"]["url"], :class => "thumb" %>
-          </div>
-      
-          
+            <div class="thumb-container">
+              <%= image_tag p["oembed"]["url"], :class => "thumb" %>
+            </div>
           <% end %>
         <% end %>
       <% else %>
-      <h2>Nothin!</h2>
+        <h3>Nothin!</h3>
       <% end %>
 
-           <hr>
-                   <h2 class="bold"> The Web</h2>
+      <hr>
+      <h2 class="bold"> The Web</h2>
       <% if @additional_pictures %>
         <% @additional_pictures.each do |p| %>
           <% caption = p["caption"] %>
@@ -70,30 +68,24 @@
             <% title << caption["text"] rescue nil %>
             <% title = title.join(" &mdash; ").html_safe %>
           <% end %>
-          
+
           <%= link_to p["images"]["standard_resolution"]["url"], :title => title, :rel => "gallery" do %>
-          <div class="thumb-container">
-            <%= image_tag p["images"]["standard_resolution"]["url"], :class => "thumb" %>
-          </div>
-          <% end %>
-          
-        <% end %>
-      <% end %>
+            <div class="thumb-container">
+              <%= image_tag p["images"]["standard_resolution"]["url"], :class => "thumb" %>
             </div>
-          
-
-    
-
-
+          <% end %>
+        <% end %>
+      <% else %>
+        <h3>Nothin!</h3>
+      <% end %>
     </div>
-
-
+  </div>
 
 <!-- modal-gallery is the modal dialog used for the image gallery -->
 <div id="modal-gallery" class="modal modal-gallery hide fade">
-    <div class="modal-header">
-        <a class="close" data-dismiss="modal">&times;</a>
-        <h3 class="modal-title"></h3>
-    </div>
-    <div class="modal-body"><div class="modal-image"></div></div>
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3 class="modal-title"></h3>
+  </div>
+  <div class="modal-body"><div class="modal-image"></div></div>
 </div>
