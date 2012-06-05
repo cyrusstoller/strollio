@@ -21,10 +21,18 @@ describe PagesController do
   end
   
   describe "GET 'pictures'" do
-    it "returns http success" do
+    it "returns http redirect" do
       session[:access_token] = "foo"
       get 'pictures'
       response.should redirect_to root_path
+    end
+  end
+  
+  describe "GET 'random'" do
+    it "returns http redirect" do
+      session[:access_token] = "foo"
+      get 'pictures'
+      response.should be_redirect
     end
   end
 

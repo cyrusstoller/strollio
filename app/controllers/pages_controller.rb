@@ -45,6 +45,10 @@ class PagesController < ApplicationController
     end
   end
   
+  def random
+    redirect_to pictures_path(:q => Random.rand(100000))
+  end
+  
   private
   
   def get_profiles
