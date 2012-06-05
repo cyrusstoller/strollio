@@ -55,9 +55,12 @@ class PagesController < ApplicationController
   
   def get_pictures_in(radius = 10)
     access_token = session[:access_token]
+    res = []
     url = APP_CONFIG["singly_api_base"] + "/v0/types/photos_feed"
     query = { :access_token => access_token, :min_count => 1000, :near => "#{@lat},#{@lon}", :dedup => true, :within => radius }
-    HTTParty.get(url, :query => query ).parsed_response if access_token
+    res += HTTParty.get(url, :query => query ).parsed_response if access_token
+    url = APP_CONFIG["singly_api_base"] + "/v0/types/photos"
+    res += HTTParty.get(url, :query => query ).parsed_response if access_token
   end
   
   def get_additional_pictures(existing_pics = 0, radius = 10)
